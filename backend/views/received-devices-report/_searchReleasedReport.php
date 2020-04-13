@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 <div class="application-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['released-device-report/index'],
+        'action' => ['released-devices-report/index'],
         'method' => 'get',
 
     ]);
@@ -26,21 +26,30 @@ use yii\widgets\ActiveForm;
         <div id="collapse_released_device_report" class="panel-collapse collapse">
             <div class="panel panel-body" style="background: #EEE">
                 <div class="row">
-                    <div class="col-md-4">
-                        <?= $form->field($model, 'serial_no')->textarea(['id'=>'serial','rows'=>8,'placeholder'=>'Search serial number']) ?>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <?= $form->field($model, 'serial_no')->textarea(['id' => 'serialReleasedReport', 'rows' => 10, 'placeholder' => 'Search serial number']) ?>
+                        </div>
+                        <div class="col-sm-9 no-padding">
+                            <div class="col-sm-12" style="padding-top: 3%">
+                                <p>Total Numbers: <span id="totalReleasedReport"></span></p>
+                                <p>Duplicate Numbers: <span id="duplicateReleasedReport"></span></p>
+                                <p>Valid Numbers: <span id="validReleasedReport"></span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <?= $form->field($model, 'released_by')->dropDownList(\backend\models\User::getOfficeStaffAndAdmin(), ['prompt' => 'Select user ----']) ?>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <?= $form->field($model, 'released_to')->dropDownList(\backend\models\User::getAllPortStaff(), ['prompt' => 'Select user ----']) ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <?= $form->field($model, 'transferred_from')->dropDownList(\backend\models\User::getAllPortStaff(), ['prompt' => 'Select user ----']) ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <?= $form->field($model, 'transferred_to')->dropDownList(\backend\models\User::getAllPortStaff(), ['prompt' => 'Select user ----']) ?>
                     </div>
 
@@ -56,8 +65,8 @@ use yii\widgets\ActiveForm;
                                 'format' => 'yyyy-mm-dd',
 
                             ],
-                            'options'=>['placeholder'=>'Date From']
-                        ])->label(false);?>
+                            'options' => ['placeholder' => 'Date From']
+                        ])->label(false); ?>
                     </div>
                     <div class="col-md-4">
                         <?= $form->field($model, 'date_to')->widget(
@@ -71,18 +80,16 @@ use yii\widgets\ActiveForm;
                                 'format' => 'yyyy-mm-dd',
 
                             ],
-                            'options'=>['placeholder'=>'Date To']
-                        ])->label(false);?>
+                            'options' => ['placeholder' => 'Date To']
+                        ])->label(false); ?>
                     </div>
 
 
+                    <div class="form-group" style="float: right">
+                        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('<i class="fa fa-backward"> go Back</i>', ['released-devices-report/index', ], ['class' => 'btn btn-default']) ?>
+                    </div>
                 </div>
-
-                <div class="form-group" style="float: right">
-                    <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-                    <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
-                </div>
-
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
@@ -92,7 +99,7 @@ use yii\widgets\ActiveForm;
 <script type="text/javascript">
     jQuery(document).ready(function () {
         validateNumbers();
-        $('#serial').keyup(function () {
+        $('#serialReleasedReport').keyup(function () {
             if (/\D/g.test(this.value)) {
                 this.value = this.value.replace(/\D/g, '');
             }
@@ -103,7 +110,7 @@ use yii\widgets\ActiveForm;
         });
 
         function validateNumbers() {
-            var value = $("#serial").val();
+            var value = $("#serialReleasedReport").val();
             var numbersArray = value.split('\n');
             var validNumbers = [];
             var duplicateNumbers = [];
@@ -126,10 +133,10 @@ use yii\widgets\ActiveForm;
                     inValidNumbers.push(number);
                 }
             }
-            $("#total").text(numbersArray.length);
-            $("#duplicate").text(duplicateNumbers.length);
-            $("#valid").text(validNumbers.length);
-            $("#invalid").text(inValidNumbers.length);
+            $("#totalReleasedReport").text(numbersArray.length);
+            $("#duplicateReleasedReport").text(duplicateNumbers.length);
+            $("#validReleasedReport").text(validNumbers.length);
+            $("#invalidReleasedReport").text(inValidNumbers.length);
         }
     });
 </script>

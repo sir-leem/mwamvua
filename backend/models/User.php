@@ -33,7 +33,7 @@ class User extends \common\models\User
     const OFFICE_STAFF = 2;
     const PORT_STAFF= 3;
     const BORDER_STAFF= 4;
-    const BILL_STAFF= 5;
+    const CREDIT_CUSTOMER= 5;
 
     const STATUS_ACTIVE=10;
     const STATUS_INACTIVE=1;
@@ -78,7 +78,7 @@ class User extends \common\models\User
                 self::OFFICE_STAFF => Yii::t('app', 'Office Staff'),
                 self::PORT_STAFF => Yii::t('app', 'Port Staff'),
                 self::BORDER_STAFF => Yii::t('app', 'Border Staff'),
-                self::BILL_STAFF => Yii::t('app', 'Bill Customer'),
+                self::CREDIT_CUSTOMER => Yii::t('app', 'Credit Customer'),
 
             ];
 
@@ -89,7 +89,7 @@ class User extends \common\models\User
                 self::OFFICE_STAFF => Yii::t('app', 'Office Staff'),
                 self::PORT_STAFF => Yii::t('app', 'Port Staff'),
                 self::BORDER_STAFF => Yii::t('app', 'Border Staff'),
-                self::BILL_STAFF => Yii::t('app', 'Bill Customer'),
+                self::CREDIT_CUSTOMER => Yii::t('app', 'Credit Customer'),
 
             ];
 
@@ -102,7 +102,7 @@ class User extends \common\models\User
     {
             return [
 
-                self::BILL_STAFF => Yii::t('app', 'Bill Customer'),
+                self::CREDIT_CUSTOMER => Yii::t('app', 'Credit Customer'),
 
             ];
 
@@ -224,16 +224,55 @@ class User extends \common\models\User
 
         }else{
 
-            return ArrayHelper::map(AuthItem::find()->where(['type'=>"1"])->andWhere(['!=', 'name', 'SuperAdministrator'])->all(),'name','name');
+            return ArrayHelper::map(AuthItem::find()
+                ->where(['type'=>"1"])->andWhere(['!=', 'name', 'SuperAdministrator'])->all(),'name','name');
 
         }
+
+    }
+
+    public static function getRulesAdministrator()
+    {
+            return ArrayHelper::map(AuthItem::find()
+                ->where(['type'=>"1"])
+                ->andWhere(['=', 'name', 'Administrator'])
+                ->all(),'name','name');
+
+    }
+
+    public static function getRulesOfficeStaff()
+    {
+            return ArrayHelper::map(AuthItem::find()
+                ->where(['type'=>"1"])
+                ->andWhere(['=', 'name', 'Operator'])
+                ->orWhere(['=', 'name', 'Supervisor'])
+                ->orWhere(['=', 'name', 'Technical'])
+                ->all(),'name','name');
+
+    }
+
+    public static function getRulesPortStaff()
+    {
+        return ArrayHelper::map(AuthItem::find()
+            ->where(['type'=>"1"])
+            ->andWhere(['=', 'name', 'SalesPerson'])
+            ->all(),'name','name');
+
+    }
+
+    public static function getRulesBorderStaff()
+    {
+        return ArrayHelper::map(AuthItem::find()
+            ->where(['type'=>"1"])
+            ->andWhere(['=', 'name', 'BorderPerson'])
+            ->all(),'name','name');
 
     }
 
     public static function getRulesBillCompany()
     {
 
-            return ArrayHelper::map(AuthItem::find()->where(['type'=>"1"])->andwhere(['name'=>'Bill_Customer'])->all(),'name','name');
+            return ArrayHelper::map(AuthItem::find()->where(['type'=>"1"])->andwhere(['name'=>'CreditCustomer'])->all(),'name','name');
 
     }
 

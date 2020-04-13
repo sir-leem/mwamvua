@@ -66,10 +66,13 @@ class ComposerStaticInitb022998611b372b964a162d0eccfb597
             'kartik\\tabs\\' => 12,
             'kartik\\select2\\' => 15,
             'kartik\\plugins\\tabs\\' => 20,
+            'kartik\\plugins\\depdrop\\' => 23,
             'kartik\\growl\\' => 13,
             'kartik\\grid\\' => 12,
             'kartik\\dialog\\' => 14,
+            'kartik\\depdrop\\' => 15,
             'kartik\\date\\' => 12,
+            'kartik\\bs4dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
         'f' => 
@@ -262,6 +265,10 @@ class ComposerStaticInitb022998611b372b964a162d0eccfb597
         array (
             0 => __DIR__ . '/..' . '/kartik-v/bootstrap-tabs-x',
         ),
+        'kartik\\plugins\\depdrop\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/dependent-dropdown',
+        ),
         'kartik\\growl\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-growl',
@@ -274,9 +281,17 @@ class ComposerStaticInitb022998611b372b964a162d0eccfb597
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
         ),
+        'kartik\\depdrop\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-depdrop/src',
+        ),
         'kartik\\date\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker/src',
+        ),
+        'kartik\\bs4dropdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-bootstrap4-dropdown/src',
         ),
         'kartik\\base\\' => 
         array (
@@ -751,6 +766,7 @@ class ComposerStaticInitb022998611b372b964a162d0eccfb597
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
         'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
         'PHPUnit\\Util\\Type' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Type.php',
+        'PHPUnit\\Util\\VersionComparisonOperator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/VersionComparisonOperator.php',
         'PHPUnit\\Util\\XdebugFilterScriptGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XdebugFilterScriptGenerator.php',
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
         'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',

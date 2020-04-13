@@ -29,8 +29,17 @@ use yii\widgets\ActiveForm;
                 <div class="row">
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <?= $form->field($model, 'serial_no')->textarea(['id'=>'serialDeviceTripPerSales','rows'=>10, 'placeholder'=>'Search serial number']) ?>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <?= $form->field($model, 'serial_no')->textarea(['id' => 'serialTripPerSaleReport', 'rows' => 10, 'placeholder' => 'Search serial number']) ?>
+                            </div>
+                            <div class="col-sm-9 no-padding">
+                                <div class="col-sm-12" style="padding-top: 3%">
+                                    <p>Total Numbers: <span id="totalTripPerSaleReport"></span></p>
+                                    <p>Duplicate Numbers: <span id="duplicateTripPerSaleReport"></span></p>
+                                    <p>Valid Numbers: <span id="validTripPerSaleReport"></span></p>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4" style="padding-top: 20px">
                             <?= $form->field($model, 'date_from')->widget(
@@ -81,7 +90,7 @@ use yii\widgets\ActiveForm;
 <script type="text/javascript">
     jQuery(document).ready(function () {
         validateNumbers();
-        $('#serialDeviceTripPerSales').keyup(function () {
+        $('#serialTripPerSaleReport').keyup(function () {
             if (/\D/g.test(this.value)) {
                 this.value = this.value.replace(/\D/g, '');
             }
@@ -92,7 +101,7 @@ use yii\widgets\ActiveForm;
         });
 
         function validateNumbers() {
-            var value = $("#serial").val();
+            var value = $("#serialTripPerSaleReport").val();
             var numbersArray = value.split('\n');
             var validNumbers = [];
             var duplicateNumbers = [];
@@ -115,10 +124,10 @@ use yii\widgets\ActiveForm;
                     inValidNumbers.push(number);
                 }
             }
-            $("#total").text(numbersArray.length);
-            $("#duplicate").text(duplicateNumbers.length);
-            $("#valid").text(validNumbers.length);
-            $("#invalid").text(inValidNumbers.length);
+            $("#totalTripPerSaleReport").text(numbersArray.length);
+            $("#duplicateTripPerSaleReport").text(duplicateNumbers.length);
+            $("#validTripPerSaleReport").text(validNumbers.length);
+            $("#invalidTripPerSaleReport").text(inValidNumbers.length);
         }
     });
 </script>

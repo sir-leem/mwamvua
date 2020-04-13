@@ -82,6 +82,40 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Roles');
                                                 'attribute' => 'name',
                                             ],
                                             'description',
+
+
+                                            [
+                                                'class' => 'yii\grid\ActionColumn',
+                                                'header' => 'Actions',
+                                                'visible'=> Yii::$app->user->can('changeUserRoles'),
+                                                'template' => '{view} {update} ',
+                                                //   'visible' => Yii::$app->user->can('super_admin'),
+                                                'buttons' => [
+                                                    'view' => function ($url, $model) {
+                                                        $url = ['role/view', 'name' => $model->name];
+                                                        return Html::a('<span class="fa fa-eye"></span>', $url, [
+                                                            'title' => 'View',
+                                                            'data-toggle' => 'tooltip', 'data-original-title' => 'Save',
+                                                            'class' => 'btn btn-primary',
+
+                                                        ]);
+
+
+                                                    },
+                                                    'update' => function ($url, $model) {
+                                                        $url = ['role/update', 'name' => $model->name];
+                                                        return Html::a('<span class="fa fa-pencil"></span>', $url, [
+                                                            'title' => 'Edit',
+                                                            'data-toggle' => 'tooltip', 'data-original-title' => 'Save',
+                                                            'class' => 'btn btn-info',
+
+                                                        ]);
+
+
+                                                    },
+
+                                                ]
+                                            ],
                                             [
 
                                                 'class' => 'yii\grid\ActionColumn', 'header' => 'Actions',
@@ -89,13 +123,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Roles');
                                                 'urlCreator' => function ($action, $model, $key, $index) {
                                                     $link = '#';
                                                     switch ($action) {
-                                                        case 'view':
-                                                            $link = Yii::$app->getUrlManager()->createUrl(['role/view', 'name' => $model->name]);
-                                                            break;
-                                                        case 'update':
 
-                                                            $link = Yii::$app->getUrlManager()->createUrl(['role/update', 'name' => $model->name]);
-                                                            break;
                                                         case 'delete':
                                                             $link = Yii::$app->getUrlManager()->createUrl(['role/delete', 'name' => $model->name]);
                                                             break;
@@ -104,7 +132,6 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Roles');
                                                 },
 
                                             ],
-
                                         ],
                                     ]); ?>
 

@@ -135,7 +135,9 @@ class RoleController extends Controller
                     return $this->redirect(['view', 'name' => $name]);
                 }
                 $model = $this->findModel($name);
+
                 if ($model->load(Yii::$app->request->post())) {
+
                     $permissions = $this->preparePermissions(Yii::$app->request->post());
                     if ($model->updateRole($name, $permissions)) {
                         Yii::$app->session->setFlash('', [

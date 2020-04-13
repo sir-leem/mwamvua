@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = 'Employees';
                             return 'PORT STAFF';
                         }elseif ($user->user_type == User::BORDER_STAFF) {
                             return 'BORDER STAFF';
-                        }elseif ($user->user_type == User::BILL_STAFF) {
+                        }elseif ($user->user_type == User::CREDIT_CUSTOMER) {
                             return 'BILL STAFF';
                         }
 
@@ -106,20 +106,18 @@ $this->params['breadcrumbs'][] = 'Employees';
 
     <div class="col-md-3  text-left">
 
+
         <?php
         if ($model->image != null) {
 
-
             $extension = explode(".", $model->image);
-
-            if($extension[1] == 'PNG' || $extension[1] == 'png' || $extension[1] == 'jpg' || $extension[1] == 'jpeg') {
-
+            if($extension != null){
                 echo Html::img('uploads/employee/' . $model->image,
                     ['width' => '150px', 'height' => '150px', 'class' => 'img-square']);
 
             } else {
                 // ToDO with error: print_r($errors);
-                echo "<img src='data:image/png;base64,$model->picha', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                echo "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
             }
 
         } else {

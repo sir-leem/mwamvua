@@ -27,9 +27,18 @@ use dosamigos\datepicker\DatePicker;
         <div id="collapse_fault_device_report" class="panel-collapse collapse">
             <div class="panel panel-body" style="background: #EEE">
                 <div class="row">
-                    <div class="col-md-4">
-                        <?= $form->field($model, 'serial_no')->textarea(['id'=>'serial_fault_device_report','rows'=>10,'placeholder'=>'Search serial number']) ?>
-                    </div>
+
+                        <div class="col-md-3">
+                            <?= $form->field($model, 'serial_no')->textarea(['id' => 'serialFaultReport', 'rows' => 10, 'placeholder' => 'Search serial number']) ?>
+                        </div>
+                        <div class="col-sm-9 no-padding">
+                            <div class="col-sm-12" style="padding-top: 3%">
+                                <p>Total Numbers: <span id="totalFaultReportReport"></span></p>
+                                <p>Duplicate Numbers: <span id="duplicateFaultReport"></span></p>
+                                <p>Valid Numbers: <span id="validFaultReport"></span></p>
+                            </div>
+                        </div>
+
                     <div class="col-md-8">
                         <?= $form->field($model, 'created_by')->dropDownList(\backend\models\User::getOfficeStaffAndAdmin(), ['prompt' => 'Select user ----']) ?>
                     </div>
@@ -80,7 +89,7 @@ use dosamigos\datepicker\DatePicker;
 <script type="text/javascript">
     jQuery(document).ready(function () {
         validateNumbers();
-        $('#serial_fault_device_report').keyup(function () {
+        $('#serialFaultReport').keyup(function () {
             if (/\D/g.test(this.value)) {
                 this.value = this.value.replace(/\D/g, '');
             }
@@ -91,7 +100,7 @@ use dosamigos\datepicker\DatePicker;
         });
 
         function validateNumbers() {
-            var value = $("#serial").val();
+            var value = $("#serialFaultReport").val();
             var numbersArray = value.split('\n');
             var validNumbers = [];
             var duplicateNumbers = [];
@@ -114,10 +123,10 @@ use dosamigos\datepicker\DatePicker;
                     inValidNumbers.push(number);
                 }
             }
-            $("#total").text(numbersArray.length);
-            $("#duplicate").text(duplicateNumbers.length);
-            $("#valid").text(validNumbers.length);
-            $("#invalid").text(inValidNumbers.length);
+            $("#totalFaultReport").text(numbersArray.length);
+            $("#duplicateFaultReport").text(duplicateNumbers.length);
+            $("#validFaultReport").text(validNumbers.length);
+            $("#invalidFaultReport").text(inValidNumbers.length);
         }
     });
 </script>

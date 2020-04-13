@@ -68,8 +68,8 @@ $this->params['breadcrumbs'][] = 'Users';
                         return 'PORT STAFF';
                     }elseif ($model->user_type == User::BORDER_STAFF) {
                         return 'BORDER STAFF';
-                    }elseif ($model->user_type == User::BILL_STAFF) {
-                        return 'BILL STAFF';
+                    }elseif ($model->user_type == User::CREDIT_CUSTOMER) {
+                        return 'CREDIT CUSTOMER';
                     }
                 }
 

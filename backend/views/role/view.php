@@ -16,7 +16,7 @@ $this->params['breadcrumbs'] = [
 ?>
 <hr/>
 <div class="row">
-    <?php if (Yii::$app->user->can('SuperAdministrator')) { ?>
+    <?php if (Yii::$app->user->can('changeUserRoles')) { ?>
         <?= Html::a(Yii::t('app', '<i class="fa fa-pencil"> Edit</i>'), ['role/update', 'name' => $model->name], ['class' => 'btn btn-primary', 'data-toggle' => "tooltip", 'rel' => "tooltip", 'title' => "Update",]) ?>
     <?php } ?>
     <?= Html::a(Yii::t('app', '<i class="fa fa-backward"> go Back</i>'), ['role/index'], ['class' => 'btn btn-warning', 'data-toggle' => "tooltip", 'rel' => "tooltip", 'title' => "Cancel",]) ?>

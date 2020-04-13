@@ -44,9 +44,9 @@ use yii\widgets\ActiveForm;
                         <?= $form->field($user, 'role')->dropDownList(\backend\models\User::getRulesBillCompany(), ['prompt' => '-- select User Roles --']) ?>
                     </div>
                     <div class="col-sm-6">
-                        <?= $form->field($user, 'user_type')->dropDownList(\backend\models\User::getUserTypeBillCustomer(), ['prompt' => '-- select User Type --']) ?>
+                        <?php $form->field($user, 'user_type')->dropDownList(\backend\models\User::getUserTypeBillCustomer(), ['prompt' => '-- select User Type --']) ?>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <?= $form->field($user, 'status')->dropDownList(\backend\models\User::getStatus(), ['prompt' => '-- choose Status --']) ?>
                     </div>
 

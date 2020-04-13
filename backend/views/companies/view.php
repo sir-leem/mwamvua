@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="companies-view" style="padding-top: 2%">
     <h3>
         <i class="fa fa-user text-default">
-            <strong> BILL COMPANY USER <strong style="color: red">(<?= $model->login_name; ?>)</strong></strong>
+            <strong> CREDIT COMPANY USER <strong style="color: red">(<?= $model->login_name; ?>)</strong></strong>
         </i>
     </h3>
 
@@ -62,29 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
 
             ],
-            [
 
-                'label' => 'User Type',
-                'value' => function($model){
-                    $user = \backend\models\User::find()->select('user_type')->where(['company_id'=>$model->id])->one();
-
-                    if ($user->user_type == User::SUPER_ADMIN) {
-                        return 'SUPER ADMIN';
-                    } elseif ($user->user_type == User::ADMIN) {
-                        return 'ADMINISTRATOR';
-                    } elseif ($user->user_type == User::OFFICE_STAFF) {
-                        return 'OFFICE STAFF';
-                    } elseif ($user->user_type == User::PORT_STAFF) {
-                        return 'PORT STAFF';
-                    }elseif ($user->user_type == User::BORDER_STAFF) {
-                        return 'BORDER STAFF';
-                    }elseif ($user->user_type == User::BILL_STAFF) {
-                        return 'BILL STAFF';
-                    }
-
-                },
-
-            ],
             [
 
                 'label' => 'Status',

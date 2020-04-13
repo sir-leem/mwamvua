@@ -70,4 +70,144 @@ class EmployeesSearch extends Employees
 
         return $dataProvider;
     }
+
+    public function searchAdministrator($params)
+    {
+        $query = Employees::find()
+            ->leftJoin('user', 'user.employee_id = employees.id')
+            ->where(['=', 'user.user_type', User::ADMIN]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'address', $this->address]);
+
+        return $dataProvider;
+    }
+
+    public function searchOfficeStaff($params)
+    {
+        $query = Employees::find()
+            ->leftJoin('user', 'user.employee_id = employees.id')
+            ->where(['=', 'user.user_type', User::OFFICE_STAFF]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'address', $this->address]);
+
+        return $dataProvider;
+    }
+
+    public function searchPortStaff($params)
+    {
+        $query = Employees::find()
+            ->leftJoin('user', 'user.employee_id = employees.id')
+            ->where(['=', 'user.user_type', User::PORT_STAFF]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'address', $this->address]);
+
+        return $dataProvider;
+    }
+
+    public function searchBorderStaff($params)
+    {
+        $query = Employees::find()
+            ->leftJoin('user', 'user.employee_id = employees.id')
+            ->where(['=', 'user.user_type', User::BORDER_STAFF]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'address', $this->address]);
+
+        return $dataProvider;
+    }
 }

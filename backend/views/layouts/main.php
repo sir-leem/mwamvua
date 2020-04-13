@@ -133,6 +133,11 @@ if (Yii::$app->controller->action->id === 'login') {
                                                     "url" => ["/system-module/index"],
                                                 ],
                                                 [
+                                                    "label" => "Company Profile",
+                                                    'visible' => Yii::$app->user->can('viewCompanyProfile'),
+                                                    "url" => ["/company-details/index"],
+                                                ],
+                                                [
                                                     "label" => "Location",
                                                     "url" => ["/location/index"],
                                                 ],
@@ -149,26 +154,31 @@ if (Yii::$app->controller->action->id === 'login') {
                                             ],
                                         ],
                                         [
+                                            "label" => "Devices Rotation",
+                                            'visible' => Yii::$app->user->can('viewDevicesRotationModule'),
+                                            "icon" => "shield",
+                                            "url" => "#",
+                                            "items" => [
+                                                [
+                                                    "label" => "Register Devices",
+                                                    "icon" => "database",
+                                                    "url" => ["/devices/index"],
+
+                                                ],
+                                            ],
+                                        ],
+                                        [
                                             "label" => "Report",
                                             'visible' => Yii::$app->user->can('viewReportModule'),
                                             "icon" => "bar-chart",
                                             "url" => ["/awaiting-receive-report/index"],
-                                          /*  "items" => [
-                                                ["label" => "Office Staff Users", "url" => ["/employees/index"],],
-                                                ["label" => "BILL Customer Users", "url" => ["/companies/index"],],
 
-                                            ],*/
                                         ],
                                         [
-                                            "label" => "User Management",
+                                            "label" => "System Users",
                                             'visible' => Yii::$app->user->can('viewUserManagementModule'),
                                             "icon" => "user",
-                                            "url" => ["/employees/index"],
-                                          /*  "items" => [
-                                                ["label" => "Office Staff Users", "url" => ["/employees/index"],],
-                                                ["label" => "BILL Customer Users", "url" => ["/companies/index"],],
-
-                                            ],*/
+                                            "url" => ["/employees/index-administrator"],
                                         ],
                                         [
                                             "label" => "Settings",
@@ -212,7 +222,6 @@ if (Yii::$app->controller->action->id === 'login') {
                 <div class="nav_menu">
                     <nav class="" role="navigation">
                         <div class="nav toggle">
-
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
 
@@ -362,7 +371,6 @@ if (Yii::$app->controller->action->id === 'login') {
 
                 <?= $content ?>
             </div>
-            <!-- /page content -->
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
@@ -386,7 +394,9 @@ if (Yii::$app->controller->action->id === 'login') {
     </body>
     </html>
     <?php $this->endPage(); ?>
-<?php } ?><?php
+<?php } ?>
+
+<?php
 
 
 
