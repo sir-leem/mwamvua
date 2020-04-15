@@ -202,15 +202,6 @@ return array (
       '@derekisbusy/growl' => $vendorDir . '/derekisbusy/yii2-flash-growl',
     ),
   ),
-  'kartik-v/yii2-tabs-x' => 
-  array (
-    'name' => 'kartik-v/yii2-tabs-x',
-    'version' => '1.2.7.0',
-    'alias' => 
-    array (
-      '@kartik/tabs' => $vendorDir . '/kartik-v/yii2-tabs-x/src',
-    ),
-  ),
   '2amigos/yii2-date-picker-widget' => 
   array (
     'name' => '2amigos/yii2-date-picker-widget',
@@ -263,6 +254,15 @@ return array (
     'alias' => 
     array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid/src',
+    ),
+  ),
+  'kartik-v/yii2-tabs-x' => 
+  array (
+    'name' => 'kartik-v/yii2-tabs-x',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/tabs' => $vendorDir . '/kartik-v/yii2-tabs-x/src',
     ),
   ),
 );

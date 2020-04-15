@@ -1,6 +1,9 @@
 <?php
 
+use dosamigos\datepicker\DateRangePicker;
+use kartik\select2\Select2;
 use yii\helpers\Html;
+use backend\models\location;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -8,36 +11,127 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="received-devices-search">
+<div class="application-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['search'],
         'method' => 'get',
-    ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    ]);
+    //  $model = new \backend\models\ReceivedDevicesSearch()
 
-    <?= $form->field($model, 'serial_no') ?>
+    ?>
+    <div class="panel panel-warning" style="background: #EEE">
+        <div class="panel panel-heading">
+            <a data-toggle="collapse" href="#collapse1"> Data Search</a>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel panel-body" style="background: #EEE">
+                <div class="row">
+                    <div class="col-md-3">
+                        <?= $form->field($model, 'serial_no')->textarea(['id' => 'serial', 'rows' => 10, 'placeholder'=>'Search serial number']) ?>
+                    </div>
+                    <div class="col-sm-9 no-padding">
+                        <div class="col-sm-12" style="padding-top: 3%">
+                            <p>Total Numbers: <span id="total"></span></p>
+                            <p>Duplicate Numbers: <span id="duplicate"></span></p>
+                            <p>Valid Numbers: <span id="valid"></span></p>
+                        </div>
+                    </div>
 
-    <?= $form->field($model, 'received_from') ?>
 
-    <?= $form->field($model, 'border_port') ?>
+                    <div class="col-md-3">
 
-    <?= $form->field($model, 'received_from_staff') ?>
+                        <?= $form->field($model, 'border_port')->widget(Select2::classname(), [
+                            'data' => \backend\models\BorderPort::getBordersPorts(),
+                            'options' => ['placeholder' => '-- select border port --'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
 
-    <?php // echo $form->field($model, 'received_at') ?>
+                            ],
+                        ]);
+                        ?>
+                    </div>
+                    <div class="col-md-3">
 
-    <?php // echo $form->field($model, 'received_status') ?>
+                        <?= $form->field($model, 'received_from')->widget(Select2::classname(), [
+                            // 'data' =>location::getLocation(),
+                            //  'data' => \backend\models\Location::getLocation(),
+                            'options' => ['placeholder' => '-- select location  --'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
 
-    <?php // echo $form->field($model, 'remark') ?>
+                            ],
+                        ]);
+                        ?>
 
-    <?php // echo $form->field($model, 'received_by') ?>
+                    </div>
+                    <div class="col-md-3">
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+                        <?= $form->field($model, 'received_by')->widget(Select2::classname(), [
+                            'data' => \backend\models\User::getBorderPortUser(),
+                            'options' => ['placeholder' => '-- select received user --'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
+
+                            ],
+                        ]);
+                        ?>
+                    </div>
+                </div>
+
+                <div class="form-group" style="float: right; padding-right: 8%">
+                    <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+                    <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+                </div>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        validateNumbers();
+        $('#serial').keyup(function () {
+            if (/\D/g.test(this.value)) {
+                this.value = this.value.replace(/\D/g, '');
+            }
+            this.value = this.value
+                .replace(/[\n\r]+/g, "")
+                .replace(/(.{10})/g, "$1\n");
+            validateNumbers();
+        });
+
+        function validateNumbers() {
+            var value = $("#serial").val();
+            var numbersArray = value.split('\n');
+            var validNumbers = [];
+            var duplicateNumbers = [];
+            var inValidNumbers = [];
+
+            // remove empty elements
+            var index = numbersArray.indexOf("");
+            while (index !== -1) {
+                numbersArray.splice(index, 1);
+                index = numbersArray.indexOf("");
+            }
+
+            for (var $i = 0; $i < numbersArray.length; $i++) {
+                var number = numbersArray[$i];
+                if (validNumbers.indexOf(number) !== -1 || inValidNumbers.indexOf(number) !== -1) {
+                    duplicateNumbers.push(number);
+                } else if (number.match(/\d{10}/)) {
+                    validNumbers.push(number);
+                } else {
+                    inValidNumbers.push(number);
+                }
+            }
+            $("#total").text(numbersArray.length);
+            $("#duplicate").text(duplicateNumbers.length);
+            $("#valid").text(validNumbers.length);
+            $("#invalid").text(inValidNumbers.length);
+        }
+    });
+</script>

@@ -33,6 +33,7 @@ class Devices extends \yii\db\ActiveRecord
     const released_devices = 4;
     const in_transit = 5;
     const fault_devices = 6;
+    const damage_devices = 7;
 
     /**
      * {@inheritdoc}

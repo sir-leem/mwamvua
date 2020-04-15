@@ -71,7 +71,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 
@@ -114,29 +130,7 @@ $this->params['breadcrumbs'][] = 'Employees';
                                         },
 
                                     ],
-                                    /*      [
 
-                                              'label' => 'User Type',
-                                              'value' => function ($model) {
-                                                  $user = \backend\models\User::find()->select('user_type')->where(['employee_id' => $model->id])->one();
-
-                                                  if ($user->user_type == User::SUPER_ADMIN) {
-                                                      return 'SUPER ADMIN';
-                                                  } elseif ($user->user_type == User::ADMIN) {
-                                                      return 'ADMINISTRATOR';
-                                                  } elseif ($user->user_type == User::OFFICE_STAFF) {
-                                                      return 'OFFICE STAFF';
-                                                  } elseif ($user->user_type == User::PORT_STAFF) {
-                                                      return 'PORT STAFF';
-                                                  } elseif ($user->user_type == User::BORDER_STAFF) {
-                                                      return 'BORDER STAFF';
-                                                  } elseif ($user->user_type == User::BILL_STAFF) {
-                                                      return 'BILL STAFF';
-                                                  }
-
-                                              },
-
-                                          ],*/
                                     [
 
                                         'label' => 'Status',
@@ -295,7 +289,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 
@@ -497,7 +507,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 
@@ -699,7 +725,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 

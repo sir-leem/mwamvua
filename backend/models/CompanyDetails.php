@@ -18,6 +18,8 @@ use Yii;
  */
 class CompanyDetails extends \yii\db\ActiveRecord
 {
+    public $company_logo;
+
     /**
      * {@inheritdoc}
      */
@@ -34,6 +36,9 @@ class CompanyDetails extends \yii\db\ActiveRecord
         return [
             [['name', 'mobile', 'email', 'tin', 'address'], 'required'],
             [['logo'], 'string'],
+            [['company_logo'], 'file'],
+            [['company_logo'], 'file', 'extensions' => 'png,jpg,jepg','maxSize' => 512000, 'tooBig' => 'Limit is 500KB', 'skipOnEmpty' => true,
+                'checkExtensionByMimeType' => false],
             [['name', 'email', 'tin', 'website', 'address'], 'string', 'max' => 200],
             [['mobile'], 'string', 'max' => 20],
         ];

@@ -160,10 +160,55 @@ if (Yii::$app->controller->action->id === 'login') {
                                             "url" => "#",
                                             "items" => [
                                                 [
-                                                    "label" => "Register Devices",
-                                                    "icon" => "database",
+                                                    "label" => "Registered Devices",
                                                     "url" => ["/devices/index"],
 
+                                                ],
+                                                [
+                                                    "label" => "Operator Department",
+                                                    "url" => ["/awaiting-receive/index"],
+
+                                                ],
+                                                [
+                                                    'label' => 'Technical Department',
+                                                    "url" => "#",
+                                                    "items" => [
+                                                        [
+                                                            'label' => 'Received Devices',
+                                                            'icon' => 'external-link-square text-green',
+                                                            'url' => ['/received-devices/index'],
+                                                        ],
+                                                        [
+                                                            'label' => 'Available Devices',
+                                                            'icon' => 'recycle text-green',
+                                                            'url' => ['/stock-devices/index'],
+                                                        ],
+                                                        [
+                                                            'label' => 'Released Devices',
+                                                            'icon' => 'external-link-square text-green',
+                                                            'url' => ['/released-devices/index'],
+                                                        ],
+                                                        [
+                                                            'label' => 'On Road Devices',
+                                                            'icon' => 'location-arrow text-green',
+                                                            'url' => ['/in-transit/index'],
+                                                        ],
+                                                        [
+                                                            'label' => 'In Transit Devices',
+                                                            'icon' => 'recycle text-green',
+                                                            'url' => ['/stock-devices/active'],
+                                                        ],
+                                                        [
+                                                            'label' => 'Fault Devices',
+                                                            'icon' => 'check-square text-green',
+                                                            'url' => ['/fault-devices/index'],
+                                                        ],
+                                                        [
+                                                            'label' => 'Damage Devices',
+                                                            'icon' => 'check-square text-green',
+                                                            'url' => ['/fault-devices/index-damage'],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -171,7 +216,7 @@ if (Yii::$app->controller->action->id === 'login') {
                                             "label" => "Report",
                                             'visible' => Yii::$app->user->can('viewReportModule'),
                                             "icon" => "bar-chart",
-                                            "url" => ["/awaiting-receive-report/index"],
+                                            "url" => ["/sales-trips/index"],
 
                                         ],
                                         [
@@ -396,7 +441,7 @@ if (Yii::$app->controller->action->id === 'login') {
     <?php $this->endPage(); ?>
 <?php } ?>
 
-<?php
+
 
 
 

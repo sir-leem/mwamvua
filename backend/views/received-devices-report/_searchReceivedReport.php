@@ -15,10 +15,9 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
 
     ]);
-    //  $model = new \backend\models\ReceivedDevicesSearch()
 
     ?>
-    <div class="panel panel-info" style="background: #EEE">
+    <div class="panel panel-warning" style="background: #EEE">
         <div class="panel panel-heading">
             <a data-toggle="collapse" href="#collapse2"> Data Search</a>
         </div>

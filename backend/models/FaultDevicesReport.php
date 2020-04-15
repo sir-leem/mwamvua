@@ -16,6 +16,16 @@ use Yii;
  */
 class FaultDevicesReport extends \yii\db\ActiveRecord
 {
+    const FAULT_DEVICE =1;
+
+    public static function getArrayStatus()
+    {
+        return [
+            self::FAULT_DEVICE => Yii::t('app', 'FAULT DEVICE'),
+
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -51,4 +61,33 @@ class FaultDevicesReport extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    public static function getAvailable()
+    {
+        $total = FaultDevices::find()->where(['view_status'=>Devices::fault_devices])->count();
+        if ($total > 0) {
+            echo $total;
+        } else {
+            echo 0;
+        }
+    }
+
+    public static function getAvailableDamage()
+    {
+        $total = FaultDevices::find()->where(['view_status'=>Devices::damage_devices])->count();
+        if ($total > 0) {
+            echo $total;
+        } else {
+            echo 0;
+        }
+    }
+
 }

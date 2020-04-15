@@ -310,7 +310,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 
@@ -512,7 +528,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 
@@ -714,7 +746,23 @@ $this->params['breadcrumbs'][] = 'Employees';
                                 },
                                 'columns' => [
                                     ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'image',
+                                        'format' => 'html',
+                                        'label' => 'Image',
+                                        'value' => function ($model) {
+                                            $extension = explode(".", $model->image);
 
+                                            if ($extension != null) {
+                                                return Html::img('uploads/employee/' . $model->image,
+                                                    ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                                            } else {
+                                                // ToDO with error: print_r($errors);
+                                                return "<img src='data:image/png;base64,$model->image', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                                            }
+                                        },
+                                    ],
                                     'name',
                                     [
 

@@ -18,6 +18,7 @@ use Yii;
  * @property int $status
  * @property int $sales_point
  * @property int $transferred_by
+ * @property int $view_status
  */
 class ReleasedDevices extends \yii\db\ActiveRecord
 {
@@ -50,8 +51,9 @@ class ReleasedDevices extends \yii\db\ActiveRecord
     {
         return [
             [['serial_no', 'released_date'], 'required'],
-            [['serial_no','transferred_by', 'released_by', 'released_to', 'transferred_from', 'transferred_to', 'status','sales_point'], 'integer'],
+            [['serial_no','view_status','transferred_by', 'released_by', 'released_to', 'transferred_from', 'transferred_to', 'status','sales_point','view_status'], 'integer'],
             [['released_date', 'transferred_date'], 'safe'],
+            [['serial_no'], 'unique'],
         ];
     }
 
@@ -71,6 +73,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
             'transferred_to' => 'Transferred To',
             'transferred_date' => 'Transferred Date',
             'status' => 'Status',
+            'view_status' => 'view Status',
         ];
     }
 
@@ -94,6 +97,11 @@ class ReleasedDevices extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'transferred_to']);
     }
 
+    public function getTransferredBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'transferred_by']);
+    }
+
     public function getBorderPort()
     {
         return $this->hasOne(BorderPort::className(), ['id' => 'sales_point']);
@@ -102,7 +110,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
 
     public static function getAvailable()
     {
-        $total = ReleasedDevices::find()->count();
+        $total = ReleasedDevices::find()->where(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {
@@ -122,7 +130,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
 
     public static function getAvailableGateThree()
     {
-        $total = ReleasedDevices::find()->where(['sales_point'=>13])->count();
+        $total = ReleasedDevices::find()->where(['sales_point'=>13])->andWhere(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {
@@ -132,7 +140,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
 
     public static function getAvailableGateFive()
     {
-        $total = ReleasedDevices::find()->where(['sales_point'=>14])->count();
+        $total = ReleasedDevices::find()->where(['sales_point'=>14])->andWhere(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {
@@ -141,7 +149,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
     }
     public static function getAvailableGateMalawi()
     {
-        $total = ReleasedDevices::find()->where(['sales_point'=>15])->count();
+        $total = ReleasedDevices::find()->where(['sales_point'=>15])->andWhere(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {
@@ -151,7 +159,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
 
     public static function getAvailableGateCargo()
     {
-        $total = ReleasedDevices::find()->count();
+        $total = ReleasedDevices::find()->andWhere(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {
@@ -161,7 +169,7 @@ class ReleasedDevices extends \yii\db\ActiveRecord
 
     public static function getAvailableGateKicd()
     {
-        $total = ReleasedDevices::find()->where(['sales_point'=>16])->count();
+        $total = ReleasedDevices::find()->where(['sales_point'=>16])->andWhere(['view_status'=>Devices::released_devices])->count();
         if ($total > 0) {
             echo $total;
         } else {

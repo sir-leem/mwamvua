@@ -120,7 +120,7 @@ class RoleController extends Controller
     public function actionUpdate($name)
     {
         if (!Yii::$app->user->isGuest) {
-            if (yii::$app->user->can('SuperAdministrator')) {
+            if (yii::$app->user->can('SuperAdministrator')||yii::$app->user->can('createUser')) {
                 if ($name == 'su1per_admin') {
 
                     Yii::$app->session->setFlash('', [

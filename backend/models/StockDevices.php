@@ -10,13 +10,14 @@ use Yii;
  * @property int $id
  * @property int $serial_no
  * @property int $created_by
- * @property string $created_at
  * @property int $status
- * @property int|null $location_from
- * @property int|null $view_status
+ * @property string $created_at
+ * @property string $location_from
  */
 class StockDevices extends \yii\db\ActiveRecord
 {
+
+
     const available=1;
     const not_deactivated=2;
 
@@ -29,7 +30,6 @@ class StockDevices extends \yii\db\ActiveRecord
 
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -44,8 +44,8 @@ class StockDevices extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['serial_no', 'created_by', 'created_at', 'status'], 'required'],
-            [['serial_no', 'created_by', 'status', 'location_from', 'view_status'], 'integer'],
+            [['serial_no', 'created_by', 'created_at'], 'required'],
+            [['serial_no', 'created_by','status','location_from'], 'integer'],
             [['created_at'], 'safe'],
             [['serial_no'], 'unique'],
         ];
@@ -60,10 +60,100 @@ class StockDevices extends \yii\db\ActiveRecord
             'id' => 'ID',
             'serial_no' => 'Serial No',
             'created_by' => 'Created By',
+            'location_from' => 'Last Trip From',
             'created_at' => 'Created At',
-            'status' => 'Status',
-            'location_from' => 'Location From',
-            'view_status' => 'View Status',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    public function getBorderPort()
+    {
+        return $this->hasOne(BorderPort::className(), ['id' => 'location_from']);
+    }
+
+
+    public static function getAvailable()
+    {
+        $total = StockDevices::find()->where(['status'=>StockDevices::available])->andWhere(['view_status'=>Devices::stock_devices])->count();
+        if ($total > 0) {
+            echo $total;
+        } else {
+            echo 0;
+        }
+    }
+
+    public static function getAvailableNotDeactivated()
+    {
+        $total = StockDevices::find()
+            ->where(['status'=>StockDevices::not_deactivated])
+            ->andWhere(['view_status'=>Devices::stock_devices])
+            ->count();
+        if ($total > 0) {
+            echo $total;
+        } else {
+            echo 0;
+        }
+    }
+
+    public static function getStock()
+    {
+        $awaiting = AwaitingReceive::find()->where(['view_status'=>Devices::awaiting_receive])->count();
+        $received = ReceivedDevices::find()->where(['view_status'=>Devices::received_devices])->count();
+        $stock = StockDevices::find()->where(['view_status'=>Devices::stock_devices])->count();
+        $released = ReleasedDevices::find()->where(['view_status'=>Devices::released_devices])->count();
+        $intransit = InTransit::find()->where(['view_status'=>Devices::in_transit])->count();
+        $faults = FaultDevices::find()->where(['view_status'=>Devices::fault_devices])->count();
+        $total=$awaiting +$received +$stock +$released +$intransit +$faults ;
+        if ($total > 0) {
+            echo $total;
+        } else {
+            echo 0;
+        }
+    }
+
+    public static function InTransit()
+    {
+
+        $date_today = strtotime("-3 day");
+        $date_today = date('Y-m-d', $date_today);
+
+        $device=StockDevices::find()
+            ->where(['<','date(created_at)',$date_today])
+            ->andWhere(['view_status'=>Devices::stock_devices])
+            ->andWhere(['status'=>2])
+            ->count();
+
+        if ($device > 0) {
+            echo $device;
+        } else {
+            echo 0;
+        }
+    }
+
+    public static function notAttended()
+    {
+
+        $date_today = strtotime("-7 day");
+        $date_today = date('Y-m-d', $date_today);
+
+        $device=StockDevices::find()
+            ->where(['<','date(created_at)',$date_today])
+            ->andWhere(['view_status'=>Devices::stock_devices])
+            ->andWhere(['status'=>2])
+            ->count();
+
+        if ($device > 0) {
+            echo $device;
+        } else {
+            echo 0;
+        }
+    }
+
 }

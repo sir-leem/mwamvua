@@ -33,7 +33,7 @@ use dosamigos\datepicker\DatePicker;
                         </div>
                         <div class="col-sm-9 no-padding">
                             <div class="col-sm-12" style="padding-top: 3%">
-                                <p>Total Numbers: <span id="totalFaultReportReport"></span></p>
+                                <p>Total Numbers: <span id="totalFaultReport"></span></p>
                                 <p>Duplicate Numbers: <span id="duplicateFaultReport"></span></p>
                                 <p>Valid Numbers: <span id="validFaultReport"></span></p>
                             </div>

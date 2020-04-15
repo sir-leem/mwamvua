@@ -8,6 +8,7 @@ use backend\models\CompanyDetailsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CompanyDetailsController implements the CRUD actions for CompanyDetails model.
@@ -74,7 +75,30 @@ class CompanyDetailsController extends Controller
     {
         $model = new CompanyDetails();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->company_logo = UploadedFile::getInstance($model, 'company_logo');
+
+            if ($model->company_logo != null) {
+                $model->company_logo->saveAs('uploads/company-logo/' . $model->name . '.' . $model->company_logo->extension);
+                $model->logo = $model->company_logo . '.' . $model->company_logo->extension;
+                $model->save();
+            }else{
+                Yii::$app->session->setFlash('', [
+                    'type' => 'warning',
+                    'duration' => 10000,
+                    'icon' => 'fa fa-warning',
+                    'title' => 'Notification',
+                    'message' => 'Logo failed to be uploaded',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
+
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -94,7 +118,30 @@ class CompanyDetailsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->company_logo = UploadedFile::getInstance($model, 'company_logo');
+ 
+            if ($model->company_logo != null) {
+                $model->company_logo->saveAs('uploads/company-logo/' . $model->name . '.' . $model->company_logo->extension);
+                $model->logo = $model->company_logo . '.' . $model->company_logo->extension;
+                $model->save();
+            }else{
+                Yii::$app->session->setFlash('', [
+                    'type' => 'warning',
+                    'duration' => 10000,
+                    'icon' => 'fa fa-warning',
+                    'title' => 'Notification',
+                    'message' => 'Logo failed to be uploaded',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
+
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

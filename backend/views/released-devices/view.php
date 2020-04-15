@@ -34,13 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'released_date',
             'released_by',
             'released_to',
-            'sales_point',
             'transferred_from',
             'transferred_to',
             'transferred_date',
-            'transferred_by',
             'status',
-            'view_status',
         ],
     ]) ?>
 

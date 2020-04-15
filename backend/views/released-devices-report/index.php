@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
             <!-- Custom Tabs -->
 
             <ul class="nav nav-tabs">
+                <li><a href="#tab_sales_trips_id" data-toggle="tab" class="fa fa-money"><b> Sales Trip</b></a></li>
+
                 <li><a href="#tab_awaiting_receive_report_id" data-toggle="tab"
                                       class="fa fa-database"><b> Awaiting Receive</b></a></li>
                 <li><a href="#tab_received_device_id" data-toggle="tab" class="fa fa-info-circle"><b> Received</b></a>
@@ -42,10 +44,10 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                 <li><a href="#tab_in_transit_device_id" data-toggle="tab" class="fa fa-location-arrow"><b> On
                             Road</b></a>
                 </li>
-                <li><a href="#tab_sales_trips_id" data-toggle="tab" class="fa fa-money"><b> Sales Trip</b></a></li>
                 <li><a href="#tab_trip_per_sales_id" data-toggle="tab" class="fa fa-external-link-square"><b> Trip per
                             Device</b></a></li>
-                <li><a href="#tab_fault_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Fault</b></a></li>
+                <li><a href="#tab_fault_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Fault Devices</b></a></li>
+                <li><a href="#tab_damage_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Damage Devices</b></a></li>
             </ul>
             <div class="tab-content">
                 <div class="box-body table-responsive">
@@ -197,7 +199,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                             <?php \yii\widgets\Pjax::End(); ?>
                         </div>
 
-                        <div class="tab-pane active" id="tab_received_device_id">
+                        <div class="tab-pane" id="tab_received_device_id">
                             <div class="col-md-6" style="padding-bottom: 1%">
                                 <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
                                             class="fa fa-recycle"></i> RAHNTECH
@@ -314,7 +316,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                                 //   'floatHeaderOptions' => ['scrollingTop' => true],
                                 'showPageSummary' => true,
                                 'panel' => [
-                                    'type' => GridView::TYPE_INFO,
+                                    'type' => GridView::TYPE_WARNING,
                                     'heading' => 'LIST OF RECEIVED DEVICES',
 
                                 ],
@@ -355,7 +357,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                             $searchModel = new \backend\models\StockDevicesReportSearch();
                             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
                             ?>
-                            <?php // $this->render('_searchAvailableDeviceReport', ['model' => $searchModel]); ?>
+                            <?= $this->render('_searchAvailableDeviceReport', ['model' => $searchModel]); ?>
                             <?php
                             $pdfHeader = [
                                 'L' => [
@@ -477,7 +479,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                             <?php \yii\widgets\Pjax::end(); ?>
                         </div>
 
-                        <div class="tab-pane" id="tab_released_device_id">
+                        <div class="tab-pane active" id="tab_released_device_id">
                             <div class="col-md-6" style="padding-bottom: 1%">
                                 <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
                                             class="fa fa-recycle"></i> RAHNTECH
@@ -762,6 +764,208 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                             <?php \yii\widgets\Pjax::end(); ?>
                         </div>
 
+                        <div class="tab-pane" id="tab_sales_trips_id">
+                            <div class="col-md-6" style="padding-bottom: 1%">
+                                <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
+                                            class="fa fa-location-arrow"></i> RAHNTECH
+                                    COMPANY LTD - Sales Trip Report</strong>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <p style="padding-top: 2%"/>
+                            <?php \yii\widgets\Pjax::begin(); ?>
+                            <?php
+                            $searchModel = new \backend\models\SalesTripsSearch();
+                            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                            ?>
+                            <?php echo $this->render('_searchSalesTripReport', ['model' => $searchModel]); ?>
+                            <?php
+                            $pdfHeader = [
+                                'L' => [
+                                    'content' => 'RAHNTECH SALES',
+                                ],
+                                'C' => [
+                                    'content' => 'RAHNTECH SALES ' . date('m'),
+                                    'font-size' => 10,
+                                    'font-style' => 'B',
+                                    'font-family' => 'arial',
+                                    'color' => '#333333'
+                                ],
+                                'R' => [
+                                    'content' => 'Sales:' . date('Y-m-d H:i:s'),
+                                ],
+                                'line' => true,
+                            ];
+
+                            $pdfFooter = [
+                                'L' => [
+                                    'content' => '&copy; RAHNTECH COMPANY LTD',
+                                    'font-size' => 10,
+                                    'color' => '#333333',
+                                    'font-family' => 'arial',
+                                ],
+                                'C' => [
+                                    'content' => '',
+                                ],
+                                'R' => [
+                                    //'content' => 'RIGHT CONTENT (FOOTER)',
+                                    'font-size' => 10,
+                                    'color' => '#333333',
+                                    'font-family' => 'arial',
+                                ],
+                                'line' => true,
+                            ];
+                            ?>
+
+                            <?php
+
+                            $gridColumns = [
+                                [
+                                    'class' => 'kartik\grid\SerialColumn',
+                                    'contentOptions' => ['class' => 'kartik-sheet-style'],
+                                    'width' => '36px',
+                                    'headerOptions' => ['class' => 'kartik-sheet-style']
+                                ],
+
+                                'sale_date',
+
+                                [
+                                    'attribute' => 'tzl',
+                                    'contentOptions' => ['class' => 'truncate'],
+                                ],
+                                'start_date_time',
+                                'end_date',
+                                'vehicle_number',
+                                'driver_name',
+
+                                [
+                                    'attribute' => 'border_id',
+                                    'value' => 'borderPort.name',
+                                ],
+                                /*        [
+                                            'attribute' => 'trip_status',
+                                            //  'value'=>'borderPort.name',
+                                        ],*/
+                                'driver_number',
+                                'serial_no',
+                                [
+                                    'attribute' => 'amount',
+                                    'value' => 'amount',
+                                    'visible' => Yii::$app->user->can('checkAmount'),
+                                ],
+                                [
+                                    'attribute' => 'gate_number',
+                                    'value' => 'port.name',
+                                ],
+                                'company_name',
+                                [
+                                    'attribute' => 'sales_person',
+                                    'value' => 'salesPerson.username',
+                                ],
+                                'receipt_number',
+                                'passport',
+                                'container_number',
+                                [
+                                    'attribute' => 'customer_type_id',
+                                    'label' => 'Payment Method',
+                                    'value' => function ($model) {
+                                        if ($model->customer_type_id == 2) {
+
+                                            return 'BILL PAYMENT';
+                                        } elseif ($model->customer_type_id == 1) {
+                                            return 'CASH PAYMENT';
+                                        }
+                                    }
+                                ],
+                                [
+                                    'attribute' => 'customer_id',
+                                    'label' => 'Bill Customer',
+                                    'value' =>'customer.company_name',
+                                ],
+                                //  'customer_name',
+                                'agent',
+
+
+                                [
+                                    'attribute' => 'edited_by',
+                                    'value' => 'editedBy.username',
+                                ],
+                                'edited_at',
+                                [
+                                    'attribute' => 'cancelled_by',
+                                    'value' => 'canceledBy.username',
+                                ],
+                                'date_cancelled',
+                                [
+                                    //'header' => ' Actions ',
+                                    'format' => 'raw',
+                                    'visible' => Yii::$app->user->can('deleteSalesTrip'),
+                                    'value' => function ($model) {
+                                        return
+
+                                            Html::a(Yii::t('app', '<span class="glyphicon glyphicon-remove"></span>'), ['cancel', 'id' => $model->id], [
+                                                'class' => 'btn btn-danger',
+                                                'data' => [
+                                                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                                    'method' => 'post',
+                                                ],
+                                            ]);
+                                    }
+                                ],
+                            ];
+
+
+                            echo \kartik\grid\GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                // 'filterModel' => $searchModel,
+                                'columns' => $gridColumns,
+                                'id' => 'grid',
+                                'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
+                                'beforeHeader' => [
+                                    [
+                                        'options' => ['class' => 'skip-export'] // remove this row from export
+                                    ]
+                                ],
+
+                                'pjax' => true,
+                                'bordered' => true,
+                                'striped' => true,
+                                'condensed' => true,
+                                'responsive' => true,
+                                'hover' => true,
+                                //   'floatHeader' => true,
+
+                                //   'floatHeaderOptions' => ['scrollingTop' => true],
+                                'showPageSummary' => true,
+                                'panel' => [
+                                    'type' => GridView::TYPE_DEFAULT,
+                                    'heading' => 'LIST OF SOLD DEVICES',
+
+                                ],
+                                'rowOptions' => function ($model) {
+                                    return ['data-id' => $model->id];
+                                },
+                                'exportConfig' => [
+                                    GridView::EXCEL => [
+                                        'filename' => Yii::t('app', 'sales report-') . date('Y-m-d'),
+                                        'showPageSummary' => true,
+                                        'options' => [
+                                            'title' => 'Custom Title',
+                                            'subject' => 'PDF export',
+                                            'keywords' => 'pdf'
+                                        ],
+
+                                    ],
+
+                                ],
+
+                            ]);
+
+                            ?>
+
+                            <?php \yii\widgets\Pjax::end(); ?>
+                        </div>
+
                         <div class="tab-pane" id="tab_fault_devices_id">
                             <div class="col-md-6" style="padding-bottom: 1%">
                                 <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
@@ -827,10 +1031,170 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
 
 
                                 'serial_no',
-                                'created_by',
-                                'created_at',
-                                'remarks:ntext',
-                                //'status',
+
+                                [
+                                    'attribute' => 'created_by',
+                                    'value' => 'createdBy.username',
+                                ],
+
+                                'attribute' => 'created_at',
+                                [
+                                    'attribute' => 'remarks',
+                                    'width' => '400px',
+                                    'contentOptions' => ['class' => 'truncate'],
+                                ],
+
+                                [
+                                    'attribute' => 'status',
+                                    'value' => function ($model) {
+
+                                        if ($model->status == \backend\models\FaultDevicesReport::FAULT_DEVICE) {
+                                            return 'FAULT';
+                                        }
+                                    }
+
+                                ],
+                            ];
+
+
+                            echo \kartik\grid\GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                // 'filterModel' => $searchModel,
+                                'columns' => $gridColumns,
+                                'id' => 'grid',
+                                'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
+                                'beforeHeader' => [
+                                    [
+                                        'options' => ['class' => 'skip-export'] // remove this row from export
+                                    ]
+                                ],
+
+                                'pjax' => true,
+                                'bordered' => true,
+                                'striped' => true,
+                                'condensed' => true,
+                                'responsive' => true,
+                                'hover' => true,
+                                //   'floatHeader' => true,
+
+                                //   'floatHeaderOptions' => ['scrollingTop' => true],
+                                'showPageSummary' => true,
+                                'panel' => [
+                                    'type' => GridView::TYPE_WARNING,
+                                    'heading' => 'LIST OF FAULT DEVICES',
+
+                                ],
+                                'rowOptions' => function ($model) {
+                                    return ['data-id' => $model->id];
+                                },
+                                'exportConfig' => [
+                                    GridView::EXCEL => [
+                                        'filename' => Yii::t('app', 'sales report-') . date('Y-m-d'),
+                                        'showPageSummary' => true,
+                                        'options' => [
+                                            'title' => 'Custom Title',
+                                            'subject' => 'PDF export',
+                                            'keywords' => 'pdf'
+                                        ],
+
+                                    ],
+
+                                ],
+
+                            ]);
+
+                            ?>
+
+                            <?php \yii\widgets\Pjax::end(); ?>
+                        </div>
+
+                        <div class="tab-pane" id="tab_damage_devices_id">
+                            <div class="col-md-6" style="padding-bottom: 1%">
+                                <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
+                                            class="fa fa-check-square"></i> RAHNTECH
+                                    COMPANY LTD - Damage Devices Report</strong>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <p style="padding-top: 2%"/>
+                            <?php \yii\widgets\Pjax::begin(); ?>
+                            <?php
+                            $searchModel = new \backend\models\DamageDevicesReportSearch();
+                            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                            ?>
+                            <?php echo $this->render('_searchDamageDevicesReport', ['model' => $searchModel]); ?>
+                            <?php
+                            $pdfHeader = [
+                                'L' => [
+                                    'content' => 'RAHNTECH SALES',
+                                ],
+                                'C' => [
+                                    'content' => 'RAHNTECH SALES ' . date('m'),
+                                    'font-size' => 10,
+                                    'font-style' => 'B',
+                                    'font-family' => 'arial',
+                                    'color' => '#333333'
+                                ],
+                                'R' => [
+                                    'content' => 'Sales:' . date('Y-m-d H:i:s'),
+                                ],
+                                'line' => true,
+                            ];
+
+                            $pdfFooter = [
+                                'L' => [
+                                    'content' => '&copy; RAHNTECH COMPANY LTD',
+                                    'font-size' => 10,
+                                    'color' => '#333333',
+                                    'font-family' => 'arial',
+                                ],
+                                'C' => [
+                                    'content' => '',
+                                ],
+                                'R' => [
+                                    //'content' => 'RIGHT CONTENT (FOOTER)',
+                                    'font-size' => 10,
+                                    'color' => '#333333',
+                                    'font-family' => 'arial',
+                                ],
+                                'line' => true,
+                            ];
+                            ?>
+
+                            <?php
+
+                            $gridColumns = [
+                                [
+                                    'class' => 'kartik\grid\SerialColumn',
+                                    'contentOptions' => ['class' => 'kartik-sheet-style'],
+                                    'width' => '36px',
+                                    'headerOptions' => ['class' => 'kartik-sheet-style']
+                                ],
+
+                                'serial_no',
+
+                                [
+                                    'attribute' => 'created_by',
+                                    'value' => 'createdBy.username',
+                                ],
+
+                                'attribute' => 'created_at',
+                                [
+                                    'attribute' => 'remarks',
+                                    'width' => '400px',
+                                    'contentOptions' => ['class' => 'truncate'],
+                                ],
+
+                                [
+                                    'attribute' => 'status',
+                                    'value' => function ($model) {
+
+                                        if ($model->status == \backend\models\DamageDevicesReport::DAMAGE_DEVICE) {
+                                            return 'FAULT';
+                                        }
+                                    }
+
+                                ],
                             ];
 
 

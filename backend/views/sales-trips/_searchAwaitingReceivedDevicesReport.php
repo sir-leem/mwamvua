@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 <div class="application-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['awaiting-receive-report/index'],
         'method' => 'get',
 
     ]);

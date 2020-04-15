@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'received_status',
             'remark:ntext',
             'received_by',
+            'view_status',
         ],
     ]) ?>
 

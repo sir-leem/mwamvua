@@ -21,17 +21,17 @@ $this->params['breadcrumbs'][] = $model->name;
 
 
     <p>
-        <?php if(Yii::$app->user->can('companyProfile')) { ?>
-        <?= Html::a('<strong class="fa fa-pencil"> Edit</strong>', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?php } ?>
-        <?php if(Yii::$app->user->can('deleteCompanySetting')) { ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if (Yii::$app->user->can('companyProfile')) { ?>
+            <?= Html::a('<strong class="fa fa-pencil"> Edit</strong>', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php } ?>
+        <?php if (Yii::$app->user->can('deleteCompanySetting')) { ?>
+            <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) ?>
         <?php } ?>
     </p>
 
@@ -45,7 +45,23 @@ $this->params['breadcrumbs'][] = $model->name;
             'tin',
             'website',
             'address',
-            'logo',
+            [
+                'attribute' => 'logo',
+                'format' => 'html',
+              //  'label' => 'Image',
+                'value' => function ($model) {
+                    $extension = explode(".", $model->logo);
+
+                    if ($extension != null) {
+                        return Html::img('uploads/company-logo/' . $model->logo,
+                            ['width' => '50px', 'height' => '50px', 'class' => 'img-square']);
+
+                    } else {
+                        // ToDO with error: print_r($errors);
+                        return "<img src='data:image/png;base64,$model->logo', width='150px' height='150px' align='center' style='vertical-align: middle'/>";
+                    }
+                },
+            ],
         ],
     ]) ?>
 

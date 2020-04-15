@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
     //  $model = new \backend\models\ReceivedDevicesSearch()
 
     ?>
-    <div class="panel panel-info" style="background: #EEE">
+    <div class="panel panel-default" style="background: #EEE">
         <div class="panel panel-heading">
             <a data-toggle="collapse" href="#collapse_sales_trip_Report"> Data Search</a>
         </div>
@@ -28,9 +28,17 @@ use yii\widgets\ActiveForm;
             <div class="panel panel-body" style="background: #EEE">
                 <div class="row">
 
-                    <div class="col-md-4">
-                        <?= $form->field($model, 'serial_no')->textarea(['id'=>'serial','rows'=>10, 'placeholder'=>'Search serial number']) ?>
+                    <div class="col-md-3">
+                        <?= $form->field($model, 'serial_no')->textarea(['id' => 'serialSalesTripsReport', 'rows' => 10, 'placeholder' => 'Search serial number']) ?>
                     </div>
+                    <div class="col-sm-9 no-padding">
+                        <div class="col-sm-12" style="padding-top: 3%">
+                            <p>Total Numbers: <span id="totalSalesTripsReport"></span></p>
+                            <p>Duplicate Numbers: <span id="duplicateSalesTripsReport"></span></p>
+                            <p>Valid Numbers: <span id="validSalesTripsReport"></span></p>
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <?= $form->field($model, 'tzl')->textInput() ?>
                         <?= $form->field($model, 'date_from')->widget(
@@ -44,8 +52,8 @@ use yii\widgets\ActiveForm;
                                 'format' => 'yyyy-mm-dd',
 
                             ],
-                            'options'=>['placeholder'=>'Date From']
-                        ])->label(false);?>
+                            'options' => ['placeholder' => 'Date From']
+                        ])->label(false); ?>
                         <?=
                         $form->field($model, 'sales_person')->widget(Select2::classname(), [
                             'data' => \backend\models\User::getAllPortStaff(),
@@ -80,9 +88,10 @@ use yii\widgets\ActiveForm;
                                 'format' => 'yyyy-mm-dd',
 
                             ],
-                            'options'=>['placeholder'=>'Date To']
-                        ])->label(false);?>
-
+                            'options' => ['placeholder' => 'Date To']
+                        ])->label(false); ?>
+                    </div>
+                    <div class="col-md-4">
                         <?=
                         $form->field($model, 'customer_type_id')->widget(Select2::classname(), [
                             'data' => \backend\models\SalesTrips::getArrayStatus(),
@@ -94,7 +103,7 @@ use yii\widgets\ActiveForm;
                         ]);
                         ?>
                     </div>
-
+                </div>
                     <div class="form-group">
                         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
                         <?= Html::a('<i class="fa fa-backward"> go Back</i>', ['sales-trips/index',], ['class' => 'btn btn-default']) ?>
@@ -102,8 +111,54 @@ use yii\widgets\ActiveForm;
 
                     <?php ActiveForm::end(); ?>
 
-                </div>
+
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        validateNumbers();
+        $('#serialSalesTripsReport').keyup(function () {
+            if (/\D/g.test(this.value)) {
+                this.value = this.value.replace(/\D/g, '');
+            }
+            this.value = this.value
+                .replace(/[\n\r]+/g, "")
+                .replace(/(.{10})/g, "$1\n");
+            validateNumbers();
+        });
+
+        function validateNumbers() {
+            var value = $("#serialSalesTripsReport").val();
+            var numbersArray = value.split('\n');
+            var validNumbers = [];
+            var duplicateNumbers = [];
+            var inValidNumbers = [];
+
+            // remove empty elements
+            var index = numbersArray.indexOf("");
+            while (index !== -1) {
+                numbersArray.splice(index, 1);
+                index = numbersArray.indexOf("");
+            }
+
+            for (var $i = 0; $i < numbersArray.length; $i++) {
+                var number = numbersArray[$i];
+                if (validNumbers.indexOf(number) !== -1 || inValidNumbers.indexOf(number) !== -1) {
+                    duplicateNumbers.push(number);
+                } else if (number.match(/\d{10}/)) {
+                    validNumbers.push(number);
+                } else {
+                    inValidNumbers.push(number);
+                }
+            }
+            $("#totalSalesTripsReport").text(numbersArray.length);
+            $("#duplicateSalesTripsReport").text(duplicateNumbers.length);
+            $("#validSalesTripsReport").text(validNumbers.length);
+            $("#invalidSalesTripsReport").text(inValidNumbers.length);
+        }
+    });
+</script>

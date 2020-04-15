@@ -216,6 +216,11 @@ class User extends \common\models\User
         $this->password_reset_token = null;
     }
 
+    public static function getOfficeUser()
+    {
+        return ArrayHelper::map(User::find()->where(['in','user_type',[1,2]])->all(),'id','username');
+    }
+
     public static function getRules()
     {
         if(Yii::$app->user->identity->user_type == User::SUPER_ADMIN){
@@ -229,6 +234,11 @@ class User extends \common\models\User
 
         }
 
+    }
+
+    public static function getPortUser()
+    {
+        return ArrayHelper::map(User::find()->where(['in','user_type',[3]])->all(),'id','username');
     }
 
     public static function getRulesAdministrator()

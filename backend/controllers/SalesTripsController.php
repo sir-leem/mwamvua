@@ -2,6 +2,12 @@
 
 namespace backend\controllers;
 
+use backend\models\Devices;
+use backend\models\InTransit;
+use backend\models\ReceivedDevices;
+use backend\models\ReleasedDevices;
+use backend\models\ReleasedDevicesReport;
+use backend\models\StockDevices;
 use Yii;
 use backend\models\SalesTrips;
 use backend\models\SalesTripsSearch;
@@ -39,6 +45,17 @@ class SalesTripsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionDevice()
+    {
+        $searchModel = new SalesTripsSearch();
+        $dataProvider = $searchModel->searchDevice(Yii::$app->request->queryParams);
+
+        return $this->render('device', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -107,6 +124,68 @@ class SalesTripsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionCancel($id)
+    {
+        if (Yii::$app->user->can('deleteSalesTrip')) {
+
+            $model = $this->findModel($id);
+            $cancel=SalesTrips::find()->where(['id'=>$id])->one();
+
+            $model->tzl=$cancel['tzl'].'-CANCELED';
+
+            $model->cancelled_by = Yii::$app->user->identity->getId();
+            $model->date_cancelled = date('Y-m-d H:m"i');
+            $model->trip_status = SalesTrips::CANCELED;
+
+            if ($model->save()){
+
+                $report=ReleasedDevicesReport::find()->where(['serial_no'=>$cancel['serial_no']])->orderBy(['released_date' => SORT_DESC])->one();
+
+                ReleasedDevices::updateAll([
+                    'released_date' =>$report['released_date'],
+                    'released_by' => $report['released_by'],
+                    'released_to' => $report['released_to'],
+                    'sales_point' => $report['sales_point'],
+                    'transferred_from' => $report['transferred_from'],
+                    'transferred_to' => $report['transferred_to'],
+                    'transferred_date' => $report['transferred_date'],
+                    'transferred_by' => $report['transferred_by'],
+                    'status' => $report['status'],
+                    'view_status' => Devices::released_devices,
+                ],['serial_no'=>$report['serial_no']]);
+
+                InTransit::updateAll(['view_status'=>Devices::released_devices],['tzl'=>$cancel['tzl']]);
+
+
+            }
+
+            Yii::$app->session->setFlash('', [
+                'type' => 'success',
+                'duration' => 5000,
+                'icon' => 'fa fa-check',
+                'message' => 'Successfully cancelled',
+                'positonY' => 'top',
+                'positonX' => 'right',
+            ]);
+
+            return $this->redirect(['index']);
+
+        } else {
+            Yii::$app->session->setFlash('', [
+                'type' => 'danger',
+                'duration' => 5000,
+                'icon' => 'fa fa-warning',
+                'message' => 'You dont have a permissions',
+                'positonY' => 'top',
+                'positonX' => 'right',
+            ]);
+
+            return $this->redirect(['index']);
+        }
+
+
     }
 
     /**

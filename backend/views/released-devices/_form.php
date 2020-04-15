@@ -20,19 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'released_to')->textInput() ?>
 
-    <?= $form->field($model, 'sales_point')->textInput() ?>
-
     <?= $form->field($model, 'transferred_from')->textInput() ?>
 
     <?= $form->field($model, 'transferred_to')->textInput() ?>
 
     <?= $form->field($model, 'transferred_date')->textInput() ?>
 
-    <?= $form->field($model, 'transferred_by')->textInput() ?>
-
     <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'view_status')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
