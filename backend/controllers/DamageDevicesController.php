@@ -2,6 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\Devices;
+use backend\models\StockDevices;
+use backend\models\StockDevicesReport;
 use Yii;
 use backend\models\DamageDevices;
 use backend\models\DamageDevicesSearch;
@@ -43,6 +46,18 @@ class DamageDevicesController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionSearch()
+    {
+        $searchModel = new DamageDevicesSearch();
+        $dataProvider = $searchModel->searchClean(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
 
     /**
      * Displays a single DamageDevices model.
@@ -124,4 +139,70 @@ class DamageDevicesController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+    public function actionAvailable()
+    {
+        Yii::$app->db->transaction(function () {
+            $action = Yii::$app->request->post('action');
+
+            $selection = (array)Yii::$app->request->post('selection');
+
+            foreach ($selection as $id) {
+
+                if ($action != '') {
+
+                    foreach ($selection as $key => $value) {
+                        $e = DamageDevices::find()->where(['id' => $selection])->one();
+
+                        $stock = new StockDevices();
+                        $stock->serial_no = $e['serial_no'];
+                        $stock->status = StockDevices::available;
+                        $stock->view_status = Devices::stock_devices;
+                        $stock->created_by = Yii::$app->user->identity->id;
+                        $stock->created_at = date('Y-m-d H:m');
+                        $stock->save();
+
+                        $stock = new StockDevicesReport();
+                        $stock->serial_no = $e['serial_no'];
+                        $stock->status = StockDevices::available;
+                        $stock->created_by = Yii::$app->user->identity->id;
+                        $stock->created_at = date('Y-m-d H:m');
+                        $stock->save();
+
+                        DamageDevices::deleteAll(['id' => $value]);
+
+                    }
+
+
+                    Yii::$app->session->setFlash('', [
+                        'type' => 'success',
+                        'duration' => 5000,
+                        'icon' => 'fa fa-check',
+                        'message' => 'Total device ' . count($selection) . ' have been  successfully allocated as available',
+                        'positonY' => 'top',
+                        'positonX' => 'right',
+                    ]);
+
+                    return $this->redirect(['index']);
+
+                } else {
+                    Yii::$app->session->setFlash('', [
+                        'type' => 'danger',
+                        'duration' => 5000,
+                        'icon' => 'fa fa-check',
+                        'message' => 'You have not selected Sales Person ',
+                        'positonY' => 'top',
+                        'positonX' => 'right',
+                    ]);
+                    return $this->redirect(['index']);
+                }
+
+
+            }
+
+            return $this->redirect(['index']);
+
+        });
+    }
+
 }

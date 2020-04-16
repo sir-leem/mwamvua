@@ -11,6 +11,7 @@ use Yii;
  * @property int $serial_no
  * @property int $created_by
  * @property int $status
+ * @property int $view_status
  * @property string $created_at
  * @property string $location_from
  */
@@ -45,7 +46,7 @@ class StockDevices extends \yii\db\ActiveRecord
     {
         return [
             [['serial_no', 'created_by', 'created_at'], 'required'],
-            [['serial_no', 'created_by','status','location_from'], 'integer'],
+            [['serial_no', 'created_by','status','view_status','location_from'], 'integer'],
             [['created_at'], 'safe'],
             [['serial_no'], 'unique'],
         ];

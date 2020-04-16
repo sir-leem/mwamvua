@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = 'Received Devices';
     <center style="padding-top: 20px">
         <?php if (Yii::$app->user->can('receiveDevices')) { ?>
             <?= Html::beginForm(['received-devices/store'], 'post'); ?>
-            <?= Html::dropDownList('action', '', ['' => 'Select Option: ', '1' => 'AVAILABLE ', '2' => 'IN TRANSIT', '3' => 'ICT DEPT'], ['class' => 'dropdown',]) ?>
+            <?= Html::dropDownList('action', '', ['' => 'Select Option: ', '1' => 'AVAILABLE ', '2' => 'IN TRANSIT', '3' => 'FAULT DEVICES','4' => 'DAMAGE DEVICES'], ['class' => 'dropdown',]) ?>
             <?= Html::submitButton('Allocated Serials',
                 ['class' => 'btn btn-warning',
                     'data' => [

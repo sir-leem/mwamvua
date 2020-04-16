@@ -6,9 +6,12 @@ use backend\models\Border;
 use backend\models\BorderPort;
 use backend\models\BorderPortUser;
 use backend\models\BorderUser;
+use backend\models\DamageDevices;
+use backend\models\DamageDevicesReportSearch;
 use backend\models\Devices;
 use backend\models\FaultDevices;
 use backend\models\FaultDevicesReport;
+use backend\models\DamageDevicesReport;
 use backend\models\ReceivedDevicesReport;
 use backend\models\StockDevices;
 use backend\models\StockDevicesReport;
@@ -394,7 +397,7 @@ class ReceivedDevicesController extends Controller
                     foreach ($selection as $key => $value) {
                         $e = ReceivedDevices::find()->where(['id'=>$value])->one();
 
-                        FaultDevices::updateAll(['status'=>StockDevices::not_deactivated,
+                        DamageDevices::updateAll(['status'=>StockDevices::not_deactivated,
                             'created_by'=>Yii::$app->user->identity->id,
                            // 'location_from'=>$e['border_port'],
                             'view_status'=>Devices::damage_devices,
@@ -402,12 +405,12 @@ class ReceivedDevicesController extends Controller
 
                         ReceivedDevices::updateAll(['view_status'=>Devices::damage_devices],['serial_no'=>$e['serial_no']]);
 
-                        $fault = new FaultDevicesReport();
-                        $fault->serial_no = $e['serial_no'];
-                        $fault->status = FaultDevices::damage_devices;
-                        $fault->created_by = Yii::$app->user->identity->id;
-                        $fault->created_at = date('Y-m-d H:i:s');
-                        $fault->save();
+                        $damage = new DamageDevicesReport();
+                        $damage->serial_no = $e['serial_no'];
+                        $damage->status = DamageDevices::damage_device;
+                        $damage->created_by = Yii::$app->user->identity->id;
+                        $damage->created_at = date('Y-m-d H:i:s');
+                        $damage->save();
 
                     }
 

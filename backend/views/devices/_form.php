@@ -71,7 +71,7 @@ $catList = \backend\models\Location::getAllLocation();
             }
             this.value = this.value
                 .replace(/[\n\r]+/g, "")
-                .replace(/(.{10})/g, "$1\n");
+                .replace(/(.{6})/g, "$1\n");
             validateNumbers();
         });
 
@@ -93,7 +93,7 @@ $catList = \backend\models\Location::getAllLocation();
                 var number = numbersArray[$i];
                 if (validNumbers.indexOf(number) !== -1 || inValidNumbers.indexOf(number) !== -1) {
                     duplicateNumbers.push(number);
-                } else if (number.match(/\d{10}/)) {
+                } else if (number.match(/\d{6}/)) {
                     validNumbers.push(number);
                 } else {
                     inValidNumbers.push(number);

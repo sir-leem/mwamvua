@@ -40,7 +40,10 @@ class CompaniesSearch extends Companies
      */
     public function search($params)
     {
-        $query = Companies::find();
+
+        $query = Companies::find()
+            ->leftJoin('user', 'user.company_id = companies.id')
+            ->where(['=', 'user.user_type', User::CREDIT_CUSTOMER]);
 
         // add conditions that should always apply here
 

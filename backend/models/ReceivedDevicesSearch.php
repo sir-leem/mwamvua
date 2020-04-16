@@ -48,6 +48,12 @@ class ReceivedDevicesSearch extends ReceivedDevices
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 300],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC,
+                ],
+            ],
         ]);
 
         $this->load($params);
@@ -95,6 +101,12 @@ class ReceivedDevicesSearch extends ReceivedDevices
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 300],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC,
+                ],
+            ],
         ]);
 
         $this->load($params);

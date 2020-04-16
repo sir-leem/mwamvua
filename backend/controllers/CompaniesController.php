@@ -84,6 +84,7 @@ class CompaniesController extends Controller
 
                         $user->company_id = $model->id;
                         $user->username = $model->login_name;
+                        $user->user_type = User::CREDIT_CUSTOMER;
                         $user->	created_at = date('Y-m-d H:i');
                         $user->	updated_at = date('Y-m-d H:i');
                         try {

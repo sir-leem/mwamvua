@@ -206,7 +206,7 @@ if (Yii::$app->controller->action->id === 'login') {
                                                         [
                                                             'label' => 'Damage Devices',
                                                             'icon' => 'check-square text-green',
-                                                            'url' => ['/fault-devices/index-damage'],
+                                                            'url' => ['/damage-devices/index'],
                                                         ],
                                                     ],
                                                 ],

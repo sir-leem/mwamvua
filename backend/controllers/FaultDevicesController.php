@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Devices;
 use backend\models\ReceivedDevices;
 use backend\models\StockDevices;
 use backend\models\StockDevicesReport;
@@ -167,24 +168,28 @@ class FaultDevicesController extends Controller
             $action = Yii::$app->request->post('action');
 
             $selection = (array)Yii::$app->request->post('selection');
-            //  print_r($action);
-            // exit;
 
             foreach ($selection as $id) {
-                //  $e = StockDevices::findOne((int)$id);
 
                 if ($action != '') {
 
                     foreach ($selection as $key => $value) {
                         $e = FaultDevices::find()->where(['id' => $selection])->one();
 
-
-                        $stock = new StockDevices();
+                 /*       $stock = new StockDevices();
                         $stock->serial_no = $e['serial_no'];
                         $stock->status = StockDevices::available;
+                        $stock->view_status = Devices::stock_devices;
                         $stock->created_by = Yii::$app->user->identity->id;
                         $stock->created_at = date('Y-m-d H:m');
-                        $stock->save();
+                        $stock->save();*/
+
+                        StockDevices::updateAll(['status'=>StockDevices::available,
+                            'created_by'=>Yii::$app->user->identity->id,
+                            'view_status'=>Devices::stock_devices,
+                            //'location_from'=>$e['border_port'],
+                            'created_at' => date('Y-m-d H:i:s')],['serial_no'=>$e['serial_no']]);
+
 
                         $stock = new StockDevicesReport();
                         $stock->serial_no = $e['serial_no'];
@@ -196,7 +201,6 @@ class FaultDevicesController extends Controller
                         FaultDevices::deleteAll(['id' => $value]);
 
                     }
-
 
                     Yii::$app->session->setFlash('', [
                         'type' => 'success',

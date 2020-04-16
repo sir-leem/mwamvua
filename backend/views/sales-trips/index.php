@@ -1190,7 +1190,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                                     'value' => function ($model) {
 
                                         if ($model->status == \backend\models\DamageDevicesReport::DAMAGE_DEVICE) {
-                                            return 'FAULT';
+                                            return 'DAMAGE';
                                         }
                                     }
 

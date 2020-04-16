@@ -19,6 +19,18 @@ use Yii;
  */
 class DamageDevices extends \yii\db\ActiveRecord
 {
+
+    const damage_device = 1;
+
+
+    public static function getStatus()
+    {
+        return [
+            self::damage_device => Yii::t('app', 'DAMAGE DEVICE'),
+
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

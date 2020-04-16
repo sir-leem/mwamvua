@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\ReleasedDevicesReport;
 use Yii;
 use backend\models\ReleasedDevices;
 use backend\models\ReleasedDevicesSearch;
@@ -124,4 +125,92 @@ class ReleasedDevicesController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionTransfer()
+    {
+
+        if (Yii::$app->user->can('transferDevices')) {
+            $action = Yii::$app->request->post('action');
+            $points = Yii::$app->request->post('points');
+
+            $selection = (array)Yii::$app->request->post('selection');
+            //  print_r($action);
+            // exit;
+
+            foreach ($selection as $id) {
+                //  $e = StockDevices::findOne((int)$id);
+
+                if ($selection != '') {
+
+                    if ($action != '' && $points != '') {
+                        $saler = ReleasedDevices::find()->where(['id' => $selection])->one();
+                        foreach ($selection as $key => $value) {
+
+                            $e = ReleasedDevices::find()->where(['id' => $selection])->one();
+
+                            ReleasedDevices::updateAll(['transferred_from' => $saler['released_to'],
+                                'transferred_by' => Yii::$app->user->identity->id, 'released_to' => $action,
+                                'transferred_to' => $action, 'transferred_date' => date('Y-m-d H:i:s'),
+                                'status' => 2, 'sales_point' => $points], ['id' => $value]);
+
+                            ReleasedDevicesReport::updateAll(['transferred_from' => $saler['released_to'],
+                                'transferred_by' => Yii::$app->user->identity->id, 'released_to' => $action,
+                                'transferred_to' => $action, 'transferred_date' => date('Y-m-d H:i:s'),
+                                'status' => 2, 'sales_point' => $points],
+                                ['id' => $value, 'released_to' => $saler['released_to'], 'released_date' => $saler['released_date']]);
+
+
+                        }
+
+                        Yii::$app->session->setFlash('', [
+                            'type' => 'success',
+                            'duration' => 5000,
+                            'icon' => 'fa fa-check',
+                            'message' => 'Total device ' . count($selection) . ' have been  successfully transferred',
+                            'positonY' => 'top',
+                            'positonX' => 'right',
+                        ]);
+
+                        return $this->redirect(['index']);
+
+                    } else {
+                        Yii::$app->session->setFlash('', [
+                            'type' => 'danger',
+                            'duration' => 5000,
+                            'icon' => 'fa fa-check',
+                            'message' => 'You have not selected Sales Person or Sales Point ',
+                            'positonY' => 'top',
+                            'positonX' => 'right',
+                        ]);
+                        return $this->redirect(['index']);
+                    }
+                } else {
+                    Yii::$app->session->setFlash('', [
+                        'type' => 'danger',
+                        'duration' => 5000,
+                        'icon' => 'fa fa-check',
+                        'message' => 'Please select devices to transfer ',
+                        'positonY' => 'top',
+                        'positonX' => 'right',
+                    ]);
+                    return $this->redirect(['index']);
+                }
+
+
+            }
+
+            return $this->redirect(['index']);
+        } else {
+            Yii::$app->session->setFlash('', [
+                'type' => 'danger',
+                'duration' => 5000,
+                'icon' => 'fa fa-check',
+                'message' => 'You do not have permission to transfer device',
+                'positonY' => 'top',
+                'positonX' => 'right',
+            ]);
+            return $this->redirect(['index']);
+        }
+    }
+
 }

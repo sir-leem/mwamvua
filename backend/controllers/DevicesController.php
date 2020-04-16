@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\AwaitingReceive;
 use backend\models\AwaitingReceiveReport;
+use backend\models\DamageDevices;
 use backend\models\FaultDevices;
 use backend\models\FaultDevicesReport;
 use backend\models\InTransit;
@@ -135,7 +136,6 @@ class DevicesController extends Controller
                     $modelReceived->remark = $remark;
                     $modelReceived->save();
 
-
                     $stock = new StockDevices();
                     $stock->serial_no = $value;
                     $stock->created_at = $timeCreated;
@@ -144,16 +144,11 @@ class DevicesController extends Controller
                     $stock->location_from = $received_from;
                     $stock->save();
 
-
-
                     $stock = new ReleasedDevices();
                     $stock->serial_no = $value;
                     $stock->released_date = $timeCreated;
                     $stock->status = 1;
                     $stock->save();
-
-
-
 
                     $stock = new InTransit();
                     $stock->serial_no = $value;
@@ -162,10 +157,6 @@ class DevicesController extends Controller
                     //  $stock->status = 1;
                     $stock->save();
 
-
-
-
-
                     $stock = new FaultDevices();
                     $stock->serial_no = $value;
                     $stock->created_at = $timeCreated;
@@ -173,7 +164,12 @@ class DevicesController extends Controller
                     $stock->status = 1;
                     $stock->save();
 
-
+                    $stock = new DamageDevices();
+                    $stock->serial_no = $value;
+                    $stock->created_at = $timeCreated;
+                    $stock->created_by = $createdBY;
+                    $stock->status = 1;
+                    $stock->save();
 
                 }
                 $data=count($line_data)-1;
