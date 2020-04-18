@@ -10,4 +10,26 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
     ],
+
+
+    'as beforeRequest' => [
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'allow' => true,
+                'actions' => ['login','sale-add','borders','release-devices','sales-report',
+                    'confirm-receive','transit-devices','device-to-confirm',
+                    'sales-points','port-staffs','customers','edit-sale','transfer'],
+            ],
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
+        'denyCallback' => function () {
+            return Yii::$app->response->redirect(['site/login']);
+        },
+    ],
+
+
 ];
