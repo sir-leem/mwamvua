@@ -121,7 +121,7 @@ class CompanyDetailsController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             $model->company_logo = UploadedFile::getInstance($model, 'company_logo');
- 
+
             if ($model->company_logo != null) {
                 $model->company_logo->saveAs('uploads/company-logo/' . $model->name . '.' . $model->company_logo->extension);
                 $model->logo = $model->company_logo . '.' . $model->company_logo->extension;

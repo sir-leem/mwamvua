@@ -2,63 +2,146 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30c9886f-1d68-40af-abba-d40f24b85f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/controllers/ApiController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Receipt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchDevice.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchDevice.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchDevice.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchDevice.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984f0fc927e.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fdd824a4.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fe049c42.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fe26b5f6.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fe87a51d.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fea96515.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fef6e471.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984ff33f0c2.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984ff5a87a4.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984ff9254d6.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984ffb9004f.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984ffd73ca3.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e984fff51e76.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98500172e07.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850037a683.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98500584793.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98500e201f9.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985013d2f06.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850159c23d.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98501da6458.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98501ef101e.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98502001dd6.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850210cba3.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985023d62ba.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98502574685.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850494b89f.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98504b176ad.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98504d3ab89.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98505060a07.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850538ba06.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98505bbe3d5.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98505def850.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985063a242e.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98506652c82.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850695b250.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98506b37450.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98507077d66.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850b651db1.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850b678f67.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850bab05f4.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9850bad80eb.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98570e98aa6.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985727a0b84.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9857a62f7b8.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9857b4e0455.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98591c900d2.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98591e94edf.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9859203924e.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985921e3e3a.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e98592528ab0.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985ab45ceac.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e985b9c85a49.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/CompanyDetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/CompanyDetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/SalesTrips.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/SalesTrips.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a01fee4ad0.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a0208016a8.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a028531364.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a02938f7eb.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a02f372c1b.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a02facbec4.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a0359f18ca.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1937ba0a8.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1958f1344.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a197e4d023.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19919fb71.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a199422254.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19985aa14.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19b08a916.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19b241ac1.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19b3732da.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a19dcdf5f8.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1a490ee4c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1a952eaf9.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1ad33e66c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1ae1b19ed.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1b42686bd.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1b9b0c61e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1bd0a2893.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1bd2c1618.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1bd477aae.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1bd6450d0.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9a1bdbb76a2.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9aba28886e4.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abadbbe82a.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abae4067b9.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abaedc7c0b.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abaf247c1a.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abaf58f603.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abaf81c21c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abafa47374.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abafd50a1e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abaffe2c35.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9abb025c543.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8a7c119f.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8aabe563.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8ad39adc.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8b0dc6ed.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8b63085c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8b85775e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8c4a114c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8c686732.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8ca29250.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8cdea4dc.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8d0abd47.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/5e9ac8d633f6a.data" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/runtime/debug/index.data" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/debug/index.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/runtime/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/logs/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/site/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/awaiting-receive-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/damage-devices-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/devices/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/devices/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/devices/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/devices/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/fault-devices-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/in-transit-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/in-transit-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/layouts/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/received-devices/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/received-devices/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/released-devices-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/released-devices-report/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchDevice.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchDevice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/_searchSalesTripReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/sales-trips/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/sales-trips/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchAvailableDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchAvailableDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchAwaitingReceivedDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchAwaitingReceivedDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchDamageDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchDamageDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchFaultDevicesReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchFaultDevicesReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchOnRoadReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchOnRoadReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchReceivedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchReceivedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchReleasedReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchReleasedReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchSalesTripPerDeviceReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchSalesTripPerDeviceReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchSalesTripReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/stock-devices-report/_searchSalesTripReport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,18 +318,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zups" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\office\cargo\backend\views\awaiting-receive-report" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\office\cargo\backend\controllers" />
-      <recent name="C:\xampp\htdocs\office\cargo\backend\views\sales-trips" />
       <recent name="C:\xampp\htdocs\office\cargo\backend\views\stock-devices-report" />
       <recent name="C:\xampp\htdocs\office\cargo\backend\views\released-devices-report" />
       <recent name="C:\xampp\htdocs\office\cargo\backend\views\received-devices-report" />
+      <recent name="C:\xampp\htdocs\office\cargo\backend\views\in-transit-report" />
+      <recent name="C:\xampp\htdocs\office\cargo\backend\views\fault-devices-report" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -278,7 +361,7 @@
       <workItem from="1584513003920" duration="60117000" />
       <workItem from="1586339132581" duration="79527000" />
       <workItem from="1586935982915" duration="1651000" />
-      <workItem from="1586940082135" duration="33481000" />
+      <workItem from="1586940082135" duration="61546000" />
     </task>
     <servers />
   </component>
@@ -286,14 +369,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="729" y="296" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587151199328">
+    <state x="453" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587481245976">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="729" y="296" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1587151199328" />
-    <state x="779" y="296" key="FileChooserDialogImpl" timestamp="1587117315714">
+    <state x="453" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1587481245976" />
+    <state x="729" y="296" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587364054853">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="779" y="296" key="FileChooserDialogImpl/78.0.1842.1080@78.0.1842.1080" timestamp="1587117315714" />
+    <state x="729" y="296" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1842.1080@78.0.1842.1080" timestamp="1587364054853" />
+    <state x="779" y="296" key="FileChooserDialogImpl" timestamp="1587481261892">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="779" y="296" key="FileChooserDialogImpl/78.0.1842.1080@78.0.1842.1080" timestamp="1587481261892" />
     <state x="306" y="355" key="NewPhpClassDialog" timestamp="1584268803936">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
@@ -326,5 +413,20 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="201" y="235" width="672" height="678" key="search.everywhere.popup/78.0.1842.1080@78.0.1842.1080" timestamp="1584438267080" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/backend/controllers/ApiController.php</url>
+          <line>69</line>
+          <properties>
+            <option name="className" value="\backend\controllers\ApiController" />
+            <option name="methodName" value="actions" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

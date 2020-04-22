@@ -244,6 +244,10 @@ if (Yii::$app->controller->action->id === 'login') {
                                                     'label' => 'Access Control',
                                                     'url' => ['/role/index'],
                                                 ],
+                                                [
+                                                    'label' => 'Automation Settings',
+                                                    'url' => ['/automation-settings/index'],
+                                                ],
 
                                             ],
                                         ],
@@ -313,76 +317,46 @@ if (Yii::$app->controller->action->id === 'login') {
                             </li>
 
                             <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
-                                   aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a>
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                      <span class="image">
-                                        <img src="http://placehold.it/128x128" alt="Profile Image"/>
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                      <span class="image">
-                                        <img src="http://placehold.it/128x128" alt="Profile Image"/>
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                      <span class="image">
-                                        <img src="http://placehold.it/128x128" alt="Profile Image"/>
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                      <span class="image">
-                                        <img src="http://placehold.it/128x128" alt="Profile Image"/>
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                      <span class="time">3 mins ago</span>
-                      </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a href="/">
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
+
+
+                                    <li class="dropdown messages-menu">
+                                        <!-- Menu toggle button -->
+                                        <?php
+                                        if (!Yii::$app->user->isGuest) { ?>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                                                <?php
+
+                                                $sms = ' Notification';
+                                                $incart = 0;
+                                                if ($incart == "1") {
+                                                    $sms = $incart . ' Notification ambayo ni mpya';
+                                                } elseif ($incart > 1) {
+                                                    $sms = 'New Notification ' . $incart . ' ambayo ni mpya';
+                                                }
+                                                if ($incart > 0) {
+                                                    ?>
+                                                <i class="fa fa-envelope-o text-black">
+                                                    <span class="label label-warning"><?= $incart; ?></span>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </i>
                                             </a>
-                                        </div>
+                                            <ul class="dropdown-menu">
+                                                  <?php
+                                                if ($incart > 0) {
+                                                    ?>
+                                                <li class="header"> <i class="fa fa-warning text-aqua"></i> <?= $sms; ?></li>
+                                              <?php
+                                                    echo '<li><div class="col-sm-12 text-center" style="padding: 10px">' . Html::a(Yii::t('app',
+                                                            'Fungua'), ['/notification/onprogress'], ['class' => 'btn btn-primary']) . '</div></li>';
+                                                }
+                                                ?>
+                                            </ul>
+                                        <?php } ?>
                                     </li>
+
                                 </ul>
                             </li>
 

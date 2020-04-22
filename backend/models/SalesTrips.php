@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use app\models\Company;
 use Yii;
 
 /**
@@ -45,6 +46,20 @@ class SalesTrips extends \yii\db\ActiveRecord
 
     const CASH = 1;
     const CREDIT = 2;
+
+    const NORMAL = 1;
+    const EDITED = 2;
+    const CANCELED = 3;
+
+    public static function getTripStatus()
+    {
+        return [
+            self::NORMAL => Yii::t('app', 'NORMAL'),
+            self::EDITED => Yii::t('app', 'EDITED'),
+            self::CANCELED => Yii::t('app', 'CANCELED'),
+
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -127,7 +142,7 @@ class SalesTrips extends \yii\db\ActiveRecord
     }
     public function getCustomer()
     {
-        return $this->hasOne(User::className(), ['id' => 'customer_id']);
+        return $this->hasOne(Companies::className(), ['id' => 'customer_id']);
     }
 
     public function getSalesPerson()

@@ -31,10 +31,11 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
             <!-- Custom Tabs -->
 
             <ul class="nav nav-tabs">
-                <li  class="active"><a href="#tab_sales_trips_id" data-toggle="tab" class="fa fa-money"><b> Sales Trip</b></a></li>
+                <li class="active"><a href="#tab_sales_trips_id" data-toggle="tab" class="fa fa-money"><b> Sales
+                            Trip</b></a></li>
 
                 <li><a href="#tab_awaiting_receive_report_id" data-toggle="tab"
-                                      class="fa fa-database"><b> Awaiting Receive</b></a></li>
+                       class="fa fa-database"><b> Awaiting Receive</b></a></li>
                 <li><a href="#tab_received_device_id" data-toggle="tab" class="fa fa-info-circle"><b> Received</b></a>
                 </li>
 
@@ -46,8 +47,10 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                 </li>
                 <li><a href="#tab_trip_per_sales_id" data-toggle="tab" class="fa fa-external-link-square"><b> Trip per
                             Device</b></a></li>
-                <li><a href="#tab_fault_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Fault Devices</b></a></li>
-                <li><a href="#tab_damage_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Damage Devices</b></a></li>
+                <li><a href="#tab_fault_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Fault
+                            Devices</b></a></li>
+                <li><a href="#tab_damage_devices_id" data-toggle="tab" class="fa fa-check-square"><b> Damage Devices</b></a>
+                </li>
             </ul>
             <div class="tab-content">
                 <div class="box-body table-responsive">
@@ -346,8 +349,9 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
 
                         <div class="tab-pane" id="tab_available_device_id">
                             <div class="col-md-6" style="padding-bottom: 1%">
-                                <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i class="fa fa-recycle"></i> RAHNTECH
-                                    COMPANY LTD -  Stock Available Devices Report</strong>
+                                <strong class="lead" style="color: #01214d;font-family: Tahoma"> <i
+                                            class="fa fa-recycle"></i> RAHNTECH
+                                    COMPANY LTD - Stock Available Devices Report</strong>
                             </div>
                             <div class="col-md-2">
                             </div>
@@ -411,8 +415,8 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
 
                                 'created_at',
                                 [
-                                    'attribute'=>'created_by',
-                                    'value'=>'createdBy.username',
+                                    'attribute' => 'created_by',
+                                    'value' => 'createdBy.username',
                                 ],
 
                                 [
@@ -871,7 +875,7 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                                     'value' => function ($model) {
                                         if ($model->customer_type_id == 2) {
 
-                                            return 'BILL PAYMENT';
+                                            return 'CREDIT PAYMENT';
                                         } elseif ($model->customer_type_id == 1) {
                                             return 'CASH PAYMENT';
                                         }
@@ -879,8 +883,14 @@ $this->params['breadcrumbs'][] = 'Awaiting Receive Reports';
                                 ],
                                 [
                                     'attribute' => 'customer_id',
-                                    'label' => 'Bill Customer',
-                                    'value' =>'customer.company_name',
+                                    'label' => 'Credit Customer',
+                                    'value' => function ($model) {
+                                        if ($model->customer_id != null) {
+                                            return $model->customer->company_name;
+                                        } else {
+                                            return '';
+                                        }
+                                    },
                                 ],
                                 //  'customer_name',
                                 'agent',

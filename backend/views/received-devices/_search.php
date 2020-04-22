@@ -100,7 +100,7 @@ use yii\widgets\ActiveForm;
             }
             this.value = this.value
                 .replace(/[\n\r]+/g, "")
-                .replace(/(.{6})/g, "$1\n");
+                .replace(/(.{10})/g, "$1\n");
             validateNumbers();
         });
 
@@ -122,7 +122,7 @@ use yii\widgets\ActiveForm;
                 var number = numbersArray[$i];
                 if (validNumbers.indexOf(number) !== -1 || inValidNumbers.indexOf(number) !== -1) {
                     duplicateNumbers.push(number);
-                } else if (number.match(/\d{6}/)) {
+                } else if (number.match(/\d{10}/)) {
                     validNumbers.push(number);
                 } else {
                     inValidNumbers.push(number);

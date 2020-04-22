@@ -17,9 +17,10 @@ return [
         'rules' => [
             [
                 'allow' => true,
-                'actions' => ['login','sale-add','borders','release-devices','sales-report',
+                'actions' => ['login','sale-add','borders','devices','sales-report',
                     'confirm-receive','transit-devices','device-to-confirm',
-                    'sales-points','port-staffs','customers','edit-sale','transfer'],
+                    'points','staffs','customers','edit-sale','transfer'],
+
             ],
             [
                 'allow' => true,
